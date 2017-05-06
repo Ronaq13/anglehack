@@ -7,7 +7,8 @@ source 'https://rubygems.org'
 
 gem 'materialize-sass'
 gem 'devise'
-
+gem 'open-uri'
+gem 'yomu'
 
 
 

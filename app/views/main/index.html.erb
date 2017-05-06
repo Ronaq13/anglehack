@@ -1,2 +1,24 @@
-<h1>Main#index</h1>
-<p>Find me in app/views/main/index.html.erb</p>
+<div style="padding: 50px; display: flex; justify-content: flex-start; align-items: center;">
+
+<% current_user.books.each do |b|%>
+
+
+          <div class="card" style="max-width: 300px;">
+            <div class="card-image">
+              <img src="images/sample-1.jpg">
+              <span class="card-title" style="color: black; "><%= b.display_name %></span>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information.
+                I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="/download_mp3/<%= current_user.id.to_s %>/<%= b.display_name %>" data-method="post"><small>Download MP3</small></a>
+              <a href="/download_pdf/<%= current_user.id.to_s %>/<%= b.display_name %>" data-method="post"><small>Download PDF</small></a>
+            </div>
+          </div>
+
+
+<%end%>
+
+</div>
