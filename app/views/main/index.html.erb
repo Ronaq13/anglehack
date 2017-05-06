@@ -1,6 +1,6 @@
 <%if user_signed_in? %>
 
-    <div id="splashscreen" style="padding: 25px; display: flex; justify-content: flex-start; align-items: flex-start;">
+    <div style="padding: 25px; display: flex; justify-content: flex-start; align-items: flex-start;">
           <% current_user.books.each do |b|%>
               <div class="card" style="max-width: 300px; margin: 25px;">
                 <div class="card-image">
@@ -21,6 +21,30 @@
 
 <%else%>
 
-    <h2>render all books</h2>
+    <div class="bigBox">
+      <div style="height: 50%; margin-top: 64px;">
+        <div class="parallax-container">
+          <div class="parallax"><%= image_tag '3.jpg', :style => "width: 100%; opacity: 0.3;" %></div>
+        </div>
+      </div>
+      <div style="height: 50%;">
+
+      </div>
+    </div>
+    <div class="bigBox">
+      <div style="height: 50%;"></div>
+      <div style="height: 50%;">
+        <div class="parallax-container">
+          <div class="parallax"><%= image_tag '3.jpg', :style => "width: 100%; opacity: 1;" %></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="bigBox" style="display: flex; flex-direction: column;">
+      <div style="height: 50%;"></div>
+      <div id="footer" style="background-color: darkgray; height: 50%;">
+
+      </div>
+    </div>
 
 <%end%>

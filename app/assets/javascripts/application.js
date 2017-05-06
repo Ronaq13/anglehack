@@ -15,3 +15,27 @@
 //= require turbolinks
 //= require materialize-sprockets
 //= require_tree .
+
+
+
+// for changing navbar
+$(window).scroll(function() {
+    var scrollPos = $(document).scrollTop();
+
+    if (scrollPos <= 20) {
+        $("#myNav").removeClass("navbarAtScroll").addClass("navbarAtTop");
+    } else {
+        $("#myNav").addClass("navbarAtScroll").removeClass("navbarAtTop");
+    }
+});
+
+$(document).ready(function(){
+    $('.parallax').parallax();
+});
+
+$(document).ready(function(){
+
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
+});
+
+
