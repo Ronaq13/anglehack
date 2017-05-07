@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require typed
 //= require turbolinks
 //= require materialize-sprockets
 //= require_tree .
@@ -35,7 +36,14 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 
-    $('.carousel.carousel-slider').carousel({fullWidth: true});
+
+    $("#typed-data").typed({
+        strings: ["Bookmics.., a way to take your book along", "Love of readers", "Come and join us...,"],
+        typeSpeed: 0,
+        loop: true
+    });
+
+
 });
 
 

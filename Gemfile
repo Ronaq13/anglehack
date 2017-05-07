@@ -9,6 +9,9 @@ gem 'materialize-sass'
 gem 'devise'
 gem 'yomu'
 gem 'tts'
+gem 'typedjq-rails'
+gem "typedjs-rails", "~> 1.0.4"
+gem "font-awesome-rails"
 
 
 
