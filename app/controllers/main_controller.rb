@@ -7,7 +7,7 @@ class MainController < ApplicationController
 
   def uploading_book
 
-    byebug
+
 
     #uploading file
     actual_book = params[:actual_book]
@@ -24,6 +24,7 @@ class MainController < ApplicationController
     book.display_name = display_name
     book.book_name = book_name
     book.user_id = current_user.id
+    book.display_content = ""
     book.save
     #generating mp3
     generatingMP3(book_name,display_name)
@@ -61,7 +62,47 @@ class MainController < ApplicationController
     )
   end
 
+  def remove
+    bookName = params[:book_name] + '.pdf'
+    book = Book.find_by_book_name(bookName)
+    book.destroy
+    book.save
 
+    remove_files_also (bookName)
+    redirect_to '/'
+  end
+
+  def remove_files_also (bookName)
+
+    File.delete("#{Rails.root}/public/uploads/users/books/" + bookName)
+    bookName.slice! '.pdf'
+    audioName = bookName + '.mp3'
+
+    File.delete("#{Rails.root}/public/uploads/users/audios/" + audioName)
+  end
+
+
+  def update_profile
+
+  end
+
+  def updating_user
+
+    actual_photo = params[:profile_pic]
+
+    profile_pic_name = current_user.id.to_s + '.' + actual_photo.original_filename.split(".")[1]
+
+    File.open("#{Rails.root}/public/uploads/users/profile_pics/" + profile_pic_name, 'wb') do |file|
+      file.write(actual_photo.read)
+    end
+    u = User.find(current_user.id)
+    u.user_name= params[:user_name]
+
+    u.profile_pic= profile_pic_name
+    u.save
+    redirect_to '/'
+
+  end
 
 
 end

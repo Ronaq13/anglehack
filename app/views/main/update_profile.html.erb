@@ -1,0 +1,15 @@
+<div style="display: flex; justify-content: center; align-items: center;">
+
+  <%= form_tag '/updating_user', :multipart => true do%>
+
+      <p>Email : <%= text_field_tag 'email', current_user.email %> </p>
+      <p>User Name : <%= text_field_tag 'user_name', current_user.user_name %> </p>
+
+
+      <p>Profile Photo : <%= file_field_tag :profile_pic %></p>
+
+      <%= submit_tag "Upload" %>
+  <%end%>
+
+
+</div>

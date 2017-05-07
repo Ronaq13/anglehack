@@ -1,15 +1,32 @@
 <%if user_signed_in? %>
 
-    <div style="padding: 25px; display: flex; justify-content: flex-start; align-items: flex-start;">
+    <ul id="slide-out" class="side-nav">
+      <li>
+          <div class="userView">
+          <div class="background">
+            <%= image_tag '3.jpg' %>
+          </div>
+          <a href="#!user"><img class="circle" src="/uploads/users/profile_pics/<%= current_user.profile_pic %>"></a>
+          <a href="#!name"><span class="white-text name">John Doe</span></a>
+          <a href="#!email"><span class="white-text email"><%= current_user.email %></span></a>
+        </div>
+      </li>
+      <li><a href="#!">Home</a></li>
+      <li><a href="/update_profile">Profile</a></li>
+      <li><div class="divider"></div></li>
+      <li><a class="waves-effect" href="/users/sign_out" data-method="delete">Sign Out</a></li>
+    </ul>
+
+
+    <div style="padding: 25px;" class="forLargeScreen">
           <% current_user.books.each do |b|%>
               <div class="card" style="max-width: 300px; margin: 25px;">
                 <div class="card-image">
-                  <img src="images/sample-1.jpg">
-                  <span class="card-title" style="color: black; "><%= b.display_name %></span>
+                  <%= image_tag 'mp3-download.jpeg', :style => "padding: 15px;"%>
                 </div>
                 <div class="card-content">
-                  <p>I am a very simple card. I am good at containing small bits of information.
-                    I am convenient because I require little markup to use effectively.</p>
+                  <p><%= b.display_name %></p>
+                  <a href="/remove/<%= b.book_name %>" data-method="post" > DELETE</a>
                 </div>
                 <div class="card-action">
                   <a href="/download_mp3/<%= current_user.id.to_s %>/<%= b.display_name %>" data-method="post"><small>Download MP3</small></a>

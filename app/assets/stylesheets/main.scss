@@ -61,3 +61,17 @@ nav>a {
 #typed-data {
   font-size: 35px;
 }
+
+.forLargeScreen {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@media only screen and (max-width: 500px) {
+  .forLargeScreen {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
